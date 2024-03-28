@@ -32,3 +32,4 @@ def copyHtml(path, position, fileName, checkF12 = True, time = 5):
     file = open(fileName, "w+", -1, "utf-8")
     file.write(html)
     file.close()
+    keyboard.press("F12")

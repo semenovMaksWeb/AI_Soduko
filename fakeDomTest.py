@@ -1,6 +1,5 @@
 from bs4 import BeautifulSoup
 
-
 def fakeDomTest(schema):
     file = open("docx/dom.html", "r", -1, "utf-8")
     soup = BeautifulSoup(file, 'lxml')

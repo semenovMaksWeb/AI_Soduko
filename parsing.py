@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 
 def pasringHtml():
+    indexStart = None
     arraySchema = []
     file = open("docx/dom.html", "r", -1, "utf-8")
     soup = BeautifulSoup(file, 'lxml')
@@ -18,5 +19,7 @@ def pasringHtml():
         if strElem != "":
             arraySchema[indexRow].insert(int(indexCol), {"val": int(strElem), "indexRow":indexRow, "indexCol":indexCol })
         else:
+            if indexStart == None:
+                indexStart = {"indexRow":indexRow, "indexCol": indexCol }
             arraySchema[indexRow].insert(int(indexCol), {"val": "", "indexRow":indexRow, "indexCol":indexCol, "checkNumber": set(), "notNumber": set() })
-    return arraySchema
+    return {"schema": arraySchema, "indexStart": indexStart}

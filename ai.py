@@ -80,6 +80,7 @@ def logic(schema):
             # print(col)
             col.get("notNumber").add(col.get("checkNumber")[0])
             col["val"] = col.get("checkNumber")[0]
+            col["vvod"] = True
             col["checkNumber"] = set()
             indexCol = -1
             indexRow = 0
