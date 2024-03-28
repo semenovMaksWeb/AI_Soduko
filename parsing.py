@@ -4,29 +4,19 @@ def pasringHtml():
     arraySchema = []
     file = open("docx/dom.html", "r", -1, "utf-8")
     soup = BeautifulSoup(file, 'lxml')
-    
- 
-    
-    indexColumn = -1
-    indexRow = -1
 
-    blockList = soup.select("#s7 > div")
+    blockList = soup.select("#s7 > div")    
+    for indexBlock, block in enumerate(blockList):
+        arraySchema.insert(indexBlock , [])
 
-    for index in range(0 , len(blockList)):
-        arraySchema.insert(index, [])
-    print(arraySchema)
-    for block in blockList:
-        indexRow = indexRow + 1
-        for elem in block.select(".r1"):
-            # print(elem)
-            indexColumn = indexColumn + 1
-            if indexColumn == 2:
-                indexRow = indexRow + 1
-            if indexColumn == 5:
-                indexRow = indexRow + 1
-            if indexColumn == 8:
-                indexColumn = 0
-                indexRow = indexRow - 2
-            print(indexRow)
-            arraySchema[indexRow].insert(indexColumn,elem.text)
-    print(arraySchema)
+    for elem in soup.select(".r1"):
+        strElem = elem.text.replace(" ", "").replace("\n", "")
+        idText = elem.attrs.get("id")
+        idText = idText[3:len(idText)]
+        indexCol = int(idText[0:1])
+        indexRow = int(idText[2:3])
+        if strElem != "":
+            arraySchema[indexRow].insert(int(indexCol), {"val": int(strElem), "indexRow":indexRow, "indexCol":indexCol })
+        else:
+            arraySchema[indexRow].insert(int(indexCol), {"val": "", "indexRow":indexRow, "indexCol":indexCol, "checkNumber": set(), "notNumber": set() })
+    return arraySchema
