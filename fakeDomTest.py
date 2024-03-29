@@ -7,11 +7,12 @@ def fakeDomTest(schema):
         for indexCol, col in enumerate(row):
             idText = "vc_" + str(indexCol) + "_" + str(indexRow)
             elem = soup.select_one("#" + idText)
-            if elem.text == "":
+            print(elem)
+            if col.get("vvod"):
+                print(idText)
                 elem.append(str(col.get("val")))
 
 
     fileSave = open("docx/dom_check.html", "w+", -1, "utf-8")
-    print(soup.select_one(".ss").text)
     fileSave.write(soup.prettify())
     fileSave.close()
