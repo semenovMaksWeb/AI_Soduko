@@ -1,3 +1,5 @@
+import env
+
 def logic(schema):
 
     def getSchema():
@@ -84,5 +86,9 @@ def logic(schema):
             col["checkNumber"] = set()
             indexCol = -1
             indexRow = 0
+        if env.getSchemaLog:
+            file = open("docx/1.log", "w+", -1, "utf-8")
+            file.write(schema)
+            file.close()    
     return schema
-
+    
