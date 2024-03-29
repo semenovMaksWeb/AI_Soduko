@@ -79,16 +79,11 @@ def logic(schema):
         checkNumberAll(indexRow, indexCol, col)
         saveCheckNumber(col)
         if col.get("checkNumber") and len(col.get("checkNumber")) == 1:
-            # print(col)
             col.get("notNumber").add(col.get("checkNumber")[0])
             col["val"] = col.get("checkNumber")[0]
             col["vvod"] = True
             col["checkNumber"] = set()
             indexCol = -1
-            indexRow = 0
-        if env.getSchemaLog:
-            file = open("docx/1.log", "w+", -1, "utf-8")
-            file.write(schema)
-            file.close()    
+            indexRow = 0   
     return schema
     
