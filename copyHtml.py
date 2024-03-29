@@ -26,10 +26,11 @@ def copyHtml(path, position, fileName, checkF12 = True, time = 5):
     pyautogui.click()
     sleep(3)
     keyboard.press("ctrl+c")
-    sleep(1)
+    sleep(2)
     # получение значения с браузера и сохранение его в файл
     html = pyperclip.waitForPaste()
     file = open(fileName, "w+", -1, "utf-8")
     file.write(html)
     file.close()
+    print("Создан файл")
     keyboard.press("F12")

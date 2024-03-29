@@ -1,9 +1,9 @@
 from bs4 import BeautifulSoup
 
-def pasringHtml():
+def pasringHtml(fileName):
     indexStart = None
     arraySchema = []
-    file = open("docx/dom.html", "r", -1, "utf-8")
+    file = open(fileName, "r", -1, "utf-8")
     soup = BeautifulSoup(file, 'lxml')
 
     blockList = soup.select("#s7 > div")    

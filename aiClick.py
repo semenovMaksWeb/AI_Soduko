@@ -17,11 +17,11 @@ def keyDown(schema, indexStart):
                 while(True):
                     if activeRow > col.get("indexRow"):
                         activeRow = activeRow - 1
-                        click("down")
+                        click("up")
 
                     if activeRow < col.get("indexRow"):
                         activeRow = activeRow + 1
-                        click("up")
+                        click("down")
 
                     if activeCol > col.get("indexCol"):
                         activeCol = activeCol - 1

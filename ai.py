@@ -84,6 +84,7 @@ def logic(schema):
             col["vvod"] = True
             col["checkNumber"] = set()
             indexCol = -1
-            indexRow = 0   
+            indexRow = 0 
+    print(getSchema())
     return schema
     
