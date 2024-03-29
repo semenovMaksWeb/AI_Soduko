@@ -7,6 +7,17 @@ import pyperclip
 def copyHtml(path, position, fileName, checkF12 = True, positionClose = None, time = 5):
     webbrowser.open(path, new=2) # Открыть вкладку
     sleep(time) # Ожидание её загрузки
+    
+    # Трудно
+    # pyautogui.moveTo(1500, 400, duration = 0.25)
+    # pyautogui.click()
+    # sleep(5)
+    
+    # Средне
+    pyautogui.moveTo(1500, 360, duration = 0.25)
+    pyautogui.click()
+    sleep(5)
+    
     # Магия копирования html через f12 для этого нужно указать позицию где будет край браузера
     if checkF12:
         keyboard.press("F12")
@@ -26,7 +37,7 @@ def copyHtml(path, position, fileName, checkF12 = True, positionClose = None, ti
     pyautogui.click()
     sleep(3)
     keyboard.press("ctrl+c")
-    sleep(2)
+    sleep(3)
     # получение значения с браузера и сохранение его в файл
     html = pyperclip.waitForPaste()
     file = open(fileName, "w+", -1, "utf-8")
