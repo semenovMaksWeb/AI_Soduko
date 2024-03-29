@@ -4,7 +4,7 @@ from time import sleep
 import pyautogui
 import pyperclip
 
-def copyHtml(path, position, fileName, checkF12 = True, time = 5):
+def copyHtml(path, position, fileName, checkF12 = True, positionClose = None, time = 5):
     webbrowser.open(path, new=2) # Открыть вкладку
     sleep(time) # Ожидание её загрузки
     # Магия копирования html через f12 для этого нужно указать позицию где будет край браузера
@@ -33,4 +33,8 @@ def copyHtml(path, position, fileName, checkF12 = True, time = 5):
     file.write(html)
     file.close()
     print("Создан файл")
-    keyboard.press("F12")
+    if checkF12:
+        keyboard.press("F12")
+    if positionClose:
+        pyautogui.moveTo(positionClose.get("left"), positionClose.get("top"), duration = 0.25)
+        pyautogui.click()
